@@ -1,0 +1,164 @@
+/**
+ * @file
+ * Custom CSS reset and base styles for Zathaya Soft theme
+ */
+
+/* Box Sizing Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* HTML and Body reset */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Remove list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove default anchor styles */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Image reset */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Form element reset */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+/* Table reset */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Remove default fieldset and legend styles */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+/* Remove default details and summary styles */
+details {
+  display: block;
+}
+
+summary {
+  display: list-item;
+  cursor: pointer;
+}
+
+/* Address inconsistencies */
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+/* Focus reset */
+:focus {
+  outline: none;
+}
+
+/* Ensure focus visibility for accessibility */
+:focus-visible {
+  outline: 2px solid #1e40af;
+  outline-offset: 2px;
+}
+
+/* Remove tap highlight on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Scrollbar styling for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Firefox scrollbar styling */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+/* Selection styling */
+::selection {
+  background: #1e40af;
+  color: white;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: #1e40af;
+  color: white;
+  text-shadow: none;
+}
