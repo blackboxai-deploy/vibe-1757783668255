@@ -1,0 +1,133 @@
+{#
+/**
+ * @file
+ * Theme override for the basic structure of a single Drupal page.
+ *
+ * Variables:
+ * - logged_in: A flag indicating if user is logged in.
+ * - root_path: The root path of the current page.
+ * - node_type: The content type for the current node, if the page is a node.
+ * - head_title: List of text elements that make up the head_title.
+ * - page_top: Initial rendered markup. This should be printed before 'page'.
+ * - page: The rendered page markup.
+ * - page_bottom: Closing rendered markup. This variable should be printed after 'page'.
+ * - db_offline: A flag indicating if the database is offline.
+ * - placeholder_token: The token for generating head, css, js and js-bottom placeholders.
+ */
+#}
+<!DOCTYPE html>
+<html{{ html_attributes.addClass('no-js') }}>
+<head>
+  <head-placeholder token="{{ placeholder_token }}">
+  <title>{{ head_title|safe_join(' | ') }}</title>
+  
+  {# SEO Meta Tags #}
+  <meta name="description" content="{{ page.description|default('Zathaya Soft adalah perusahaan pengembangan website profesional yang mengkhususkan diri dalam solusi Drupal dan ReactJS untuk kebutuhan bisnis digital Anda.') }}">
+  <meta name="keywords" content="web development, drupal development, reactjs, website company, e-commerce, custom web solutions, indonesia web developer">
+  <meta name="author" content="Zathaya Soft">
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#1e40af">
+  
+  {# Open Graph / Facebook #}
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ url('<current>') }}">
+  <meta property="og:title" content="{{ head_title|safe_join(' | ') }}">
+  <meta property="og:description" content="{{ page.description|default('Solusi pengembangan website profesional dengan teknologi Drupal dan ReactJS untuk kebutuhan bisnis Anda.') }}">
+  <meta property="og:image" content="{{ base_path ~ directory }}/images/og-image.jpg">
+  <meta property="og:site_name" content="Zathaya Soft">
+  <meta property="og:locale" content="id_ID">
+  
+  {# Twitter #}
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="{{ url('<current>') }}">
+  <meta property="twitter:title" content="{{ head_title|safe_join(' | ') }}">
+  <meta property="twitter:description" content="{{ page.description|default('Solusi pengembangan website profesional dengan teknologi Drupal dan ReactJS.') }}">
+  <meta property="twitter:image" content="{{ base_path ~ directory }}/images/twitter-image.jpg">
+  <meta property="twitter:site" content="@zathayasoft">
+  
+  {# Favicons #}
+  <link rel="icon" href="{{ base_path ~ directory }}/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ base_path ~ directory }}/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ base_path ~ directory }}/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ base_path ~ directory }}/images/favicon-16x16.png">
+  <link rel="manifest" href="{{ base_path ~ directory }}/site.webmanifest">
+  
+  {# Google Fonts #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  {# Structured Data / JSON-LD #}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Zathaya Soft",
+    "description": "Professional web development company specializing in Drupal and ReactJS solutions",
+    "url": "{{ url('<front>') }}",
+    "logo": "{{ base_path ~ directory }}/images/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+62-21-1234-5678",
+      "contactType": "customer service",
+      "availableLanguage": ["Indonesian", "English"]
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jl. Sudirman No. 123",
+      "addressLocality": "Jakarta",
+      "addressRegion": "DKI Jakarta",
+      "postalCode": "12190",
+      "addressCountry": "ID"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/zathayasoft",
+      "https://twitter.com/zathayasoft",
+      "https://facebook.com/zathayasoft"
+    ],
+    "foundingDate": "2020",
+    "knowsAbout": ["Web Development", "Drupal", "ReactJS", "E-commerce", "Custom Software"],
+    "areaServed": {
+      "@type": "Country",
+      "name": "Indonesia"
+    }
+  }
+  </script>
+  
+  <css-placeholder token="{{ placeholder_token }}">
+  <js-placeholder token="{{ placeholder_token }}">
+</head>
+
+<body{{ attributes.addClass(body_classes) }}>
+  {#
+    Keyboard navigation/accessibility link to main content section in page.html.twig.
+  #}
+  <a href="#main-content" class="visually-hidden focusable skip-link">
+    {{ 'Skip to main content'|t }}
+  </a>
+  
+  {{ page_top }}
+  {{ page }}
+  {{ page_bottom }}
+  
+  {# Enhanced JavaScript for progressive enhancement #}
+  <script>
+    // Remove no-js class and add js class
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+    
+    // Basic feature detection
+    if ('querySelector' in document && 'addEventListener' in window) {
+      document.documentElement.classList.add('modern-browser');
+    }
+    
+    // Intersection Observer support detection
+    if ('IntersectionObserver' in window) {
+      document.documentElement.classList.add('intersection-observer');
+    }
+  </script>
+  
+  <js-bottom-placeholder token="{{ placeholder_token }}">
+</body>
+</html>
