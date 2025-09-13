@@ -1,0 +1,234 @@
+{#
+/**
+ * @file
+ * Theme override to display a single page.
+ *
+ * The doctype, html, head and body tags are not in this template. Instead
+ * they can be found in the html.html.twig template in this directory.
+ *
+ * Available variables:
+ *
+ * General utility variables:
+ * - base_path: The base URL path of the Drupal installation.
+ * - is_front: A flag indicating if the current page is the front page.
+ * - logged_in: A flag indicating if the user is registered and signed in.
+ * - is_admin: A flag indicating if the user has permission to access administration pages.
+ *
+ * Site identity:
+ * - front_page: The URL of the front page. Use this instead of base_path.
+ * - logo: The path to the logo image, as defined in theme configuration.
+ * - site_name: The name of the site. This is empty when displaying the site name has been disabled in the theme settings.
+ * - site_slogan: The slogan of the site.
+ *
+ * Page content (in order of occurrence in the default page.html.twig):
+ * - node: Fully loaded node, if there is an automatically-loaded node associated with the page and the node ID is the second argument in the page's path.
+ * - page.header: Items for the header region.
+ * - page.primary_menu: Items for the primary menu region.
+ * - page.secondary_menu: Items for the secondary menu region.
+ * - page.hero: Items for the hero region.
+ * - page.breadcrumb: Items for the breadcrumb region.
+ * - page.content: The main content of the current page.
+ * - page.sidebar_first: Items for the first sidebar.
+ * - page.sidebar_second: Items for the second sidebar.
+ * - page.featured: Items for the featured region.
+ * - page.footer_first: Items for the first footer column.
+ * - page.footer_second: Items for the second footer column.
+ * - page.footer_third: Items for the third footer column.
+ * - page.footer_fourth: Items for the fourth footer column.
+ * - page.footer_bottom: Items for the footer bottom region.
+ */
+#}
+
+<div class="page-wrapper" id="page-wrapper">
+
+  {# Header Section #}
+  <header class="site-header" id="site-header" role="banner">
+    <div class="header-container container">
+      
+      {# Logo and Site Name #}
+      <div class="site-branding">
+        {% if logo %}
+          <a href="{{ front_page }}" title="{{ 'Home'|t }}" rel="home" class="logo-link">
+            <img src="{{ logo }}" alt="{{ 'Home'|t }}" class="site-logo">
+          </a>
+        {% endif %}
+        
+        <div class="site-identity">
+          {% if site_name %}
+            <h1 class="site-name">
+              <a href="{{ front_page }}" title="{{ 'Home'|t }}" rel="home" class="site-name-link">
+                {{ site_name }}
+              </a>
+            </h1>
+          {% endif %}
+          
+          {% if site_slogan %}
+            <div class="site-slogan">{{ site_slogan }}</div>
+          {% endif %}
+        </div>
+      </div>
+
+      {# Navigation #}
+      {% if page.primary_menu %}
+        <nav class="primary-navigation" id="primary-navigation" role="navigation" aria-label="{{ 'Primary menu'|t }}">
+          <div class="navigation-wrapper">
+            {{ page.primary_menu }}
+          </div>
+          
+          {# Mobile Menu Toggle #}
+          <button class="mobile-menu-toggle" type="button" aria-label="{{ 'Toggle mobile menu'|t }}" aria-expanded="false" aria-controls="primary-navigation">
+            <span class="hamburger">
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+            </span>
+          </button>
+        </nav>
+      {% endif %}
+
+      {# CTA Button #}
+      <div class="header-cta">
+        <a href="{{ path('entity.webform.canonical', {'webform': 'contact'}) }}" class="btn btn-primary btn-cta">
+          {{ 'Konsultasi Gratis'|t }}
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  {# Hero Section (for front page) #}
+  {% if is_front and page.hero %}
+    <section class="hero-section" id="hero-section">
+      <div class="hero-container">
+        {{ page.hero }}
+      </div>
+    </section>
+  {% endif %}
+
+  {# Main Content Area #}
+  <main class="main-content" id="main-content" role="main">
+    
+    {# Breadcrumb #}
+    {% if page.breadcrumb and not is_front %}
+      <div class="breadcrumb-wrapper">
+        <div class="container">
+          {{ page.breadcrumb }}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Featured Content #}
+    {% if page.featured %}
+      <div class="featured-wrapper">
+        <div class="container">
+          {{ page.featured }}
+        </div>
+      </div>
+    {% endif %}
+
+    {# Content Layout #}
+    <div class="content-wrapper">
+      <div class="container">
+        <div class="content-layout {% if page.sidebar_first %}has-sidebar-first{% endif %} {% if page.sidebar_second %}has-sidebar-second{% endif %}">
+          
+          {# Sidebar First #}
+          {% if page.sidebar_first %}
+            <aside class="sidebar sidebar-first" role="complementary" aria-label="{{ 'First sidebar'|t }}">
+              {{ page.sidebar_first }}
+            </aside>
+          {% endif %}
+
+          {# Main Content #}
+          <div class="main-content-inner">
+            {# Status messages #}
+            {{ drupal_messages() }}
+            
+            {# Page title for non-front pages #}
+            {% if not is_front %}
+              {% if page.title %}
+                <div class="page-title-wrapper">
+                  {{ page.title }}
+                </div>
+              {% endif %}
+            {% endif %}
+
+            {# Main page content #}
+            <div class="page-content">
+              {{ page.content }}
+            </div>
+          </div>
+
+          {# Sidebar Second #}
+          {% if page.sidebar_second %}
+            <aside class="sidebar sidebar-second" role="complementary" aria-label="{{ 'Second sidebar'|t }}">
+              {{ page.sidebar_second }}
+            </aside>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  {# Footer #}
+  <footer class="site-footer" role="contentinfo" aria-label="{{ 'Site footer'|t }}">
+    
+    {# Footer Columns #}
+    {% if page.footer_first or page.footer_second or page.footer_third or page.footer_fourth %}
+      <div class="footer-main">
+        <div class="container">
+          <div class="footer-columns">
+            
+            {% if page.footer_first %}
+              <div class="footer-column footer-first">
+                {{ page.footer_first }}
+              </div>
+            {% endif %}
+            
+            {% if page.footer_second %}
+              <div class="footer-column footer-second">
+                {{ page.footer_second }}
+              </div>
+            {% endif %}
+            
+            {% if page.footer_third %}
+              <div class="footer-column footer-third">
+                {{ page.footer_third }}
+              </div>
+            {% endif %}
+            
+            {% if page.footer_fourth %}
+              <div class="footer-column footer-fourth">
+                {{ page.footer_fourth }}
+              </div>
+            {% endif %}
+            
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    {# Footer Bottom #}
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-content">
+          {% if page.footer_bottom %}
+            {{ page.footer_bottom }}
+          {% else %}
+            <div class="footer-copyright">
+              <p>&copy; {{ "now"|date('Y') }} {{ site_name|default('Zathaya Soft') }}. {{ 'All rights reserved.'|t }}</p>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+</div>
+
+{# Back to top button #}
+<button class="back-to-top" id="back-to-top" type="button" aria-label="{{ 'Back to top'|t }}" title="{{ 'Back to top'|t }}">
+  <span class="back-to-top-icon">↑</span>
+</button>
