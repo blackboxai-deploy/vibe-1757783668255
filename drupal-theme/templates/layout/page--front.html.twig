@@ -1,0 +1,418 @@
+{#
+/**
+ * @file
+ * Theme override for the front page.
+ *
+ * This template is used specifically for the homepage and includes
+ * custom sections like hero, services, portfolio preview, testimonials.
+ */
+#}
+
+{# Attach homepage specific library #}
+{{ attach_library('zathaya_soft/homepage') }}
+
+<div class="page-wrapper homepage-wrapper" id="page-wrapper">
+
+  {# Header Section #}
+  <header class="site-header homepage-header" id="site-header" role="banner">
+    <div class="header-container container">
+      
+      {# Logo and Site Name #}
+      <div class="site-branding">
+        {% if logo %}
+          <a href="{{ front_page }}" title="{{ 'Home'|t }}" rel="home" class="logo-link">
+            <div class="logo-wrapper">
+              <div class="logo-icon">Z</div>
+            </div>
+          </a>
+        {% endif %}
+        
+        <div class="site-identity">
+          <h1 class="site-name">
+            <a href="{{ front_page }}" title="{{ 'Home'|t }}" rel="home" class="site-name-link">
+              Zathaya Soft
+            </a>
+          </h1>
+          <div class="site-tagline">Web Solutions</div>
+        </div>
+      </div>
+
+      {# Navigation #}
+      <nav class="primary-navigation" id="primary-navigation" role="navigation" aria-label="{{ 'Primary menu'|t }}">
+        <div class="navigation-wrapper">
+          <ul class="main-menu">
+            <li class="menu-item">
+              <a href="{{ front_page }}" class="menu-link active">{{ 'Beranda'|t }}</a>
+            </li>
+            <li class="menu-item">
+              <a href="{{ path('view.services.page_1') }}" class="menu-link">{{ 'Layanan'|t }}</a>
+            </li>
+            <li class="menu-item">
+              <a href="{{ path('view.portfolio.page_1') }}" class="menu-link">{{ 'Portfolio'|t }}</a>
+            </li>
+            <li class="menu-item">
+              <a href="{{ path('node.add', {'node_type': 'page'}) }}" class="menu-link">{{ 'Tentang Kami'|t }}</a>
+            </li>
+            <li class="menu-item">
+              <a href="{{ path('entity.webform.canonical', {'webform': 'contact'}) }}" class="menu-link">{{ 'Kontak'|t }}</a>
+            </li>
+          </ul>
+        </div>
+        
+        {# Mobile Menu Toggle #}
+        <button class="mobile-menu-toggle" type="button" aria-label="{{ 'Toggle mobile menu'|t }}" aria-expanded="false" aria-controls="primary-navigation">
+          <span class="hamburger">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </span>
+        </button>
+      </nav>
+
+      {# CTA Button #}
+      <div class="header-cta">
+        <a href="{{ path('entity.webform.canonical', {'webform': 'contact'}) }}" class="btn btn-primary btn-cta">
+          {{ 'Konsultasi Gratis'|t }}
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  {# Hero Section #}
+  <section class="hero-section" id="hero-section">
+    <div class="hero-background">
+      <div class="hero-pattern"></div>
+      <div class="hero-floating-elements">
+        <div class="floating-element floating-element-1"></div>
+        <div class="floating-element floating-element-2"></div>
+        <div class="floating-element floating-element-3"></div>
+      </div>
+    </div>
+    
+    <div class="hero-container container">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          {{ 'Solusi Website'|t }}
+          <span class="hero-title-highlight">{{ 'Profesional'|t }}</span>
+        </h1>
+        
+        <p class="hero-description">
+          {{ 'Zathaya Soft mengkhususkan diri dalam pengembangan website dengan'|t }}
+          <strong>{{ 'Drupal'|t }}</strong> {{ 'dan'|t }} <strong>{{ 'ReactJS'|t }}</strong>.
+          {{ 'Wujudkan visi digital bisnis Anda bersama kami.'|t }}
+        </p>
+
+        {# Key Features #}
+        <div class="hero-features">
+          <span class="feature-badge">🚀 {{ 'Modern Technology'|t }}</span>
+          <span class="feature-badge">⚡ {{ 'Fast Performance'|t }}</span>
+          <span class="feature-badge">🔒 {{ 'Secure & Reliable'|t }}</span>
+          <span class="feature-badge">📱 {{ 'Mobile Responsive'|t }}</span>
+          <span class="feature-badge">🎯 {{ 'SEO Optimized'|t }}</span>
+        </div>
+
+        {# CTA Buttons #}
+        <div class="hero-actions">
+          <a href="{{ path('entity.webform.canonical', {'webform': 'contact'}) }}" class="btn btn-primary btn-large">
+            {{ 'Konsultasi Gratis'|t }}
+          </a>
+          <a href="{{ path('view.portfolio.page_1') }}" class="btn btn-outline btn-large">
+            {{ 'Lihat Portfolio'|t }}
+          </a>
+        </div>
+
+        {# Stats #}
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number">100+</div>
+            <div class="stat-label">{{ 'Project Selesai'|t }}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">{{ 'Client Puas'|t }}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">{{ 'Tahun Pengalaman'|t }}</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">{{ 'Support'|t }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {# Scroll Indicator #}
+    <div class="scroll-indicator">
+      <div class="scroll-mouse">
+        <div class="scroll-dot"></div>
+      </div>
+    </div>
+  </section>
+
+  {# Services Section #}
+  <section class="services-section section-padding" id="services-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">{{ 'Layanan Kami'|t }}</h2>
+        <p class="section-description">
+          {{ 'Kami menyediakan solusi web development yang komprehensif dengan teknologi terdepan untuk memenuhi kebutuhan digital bisnis Anda.'|t }}
+        </p>
+      </div>
+
+      {# Services will be loaded via Views or custom content #}
+      <div class="services-grid" id="services-grid">
+        {{ page.content }}
+      </div>
+
+      <div class="section-cta text-center">
+        <a href="{{ path('view.services.page_1') }}" class="btn btn-primary btn-large">
+          {{ 'Lihat Semua Layanan'|t }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {# Why Choose Us Section #}
+  <section class="features-section section-padding bg-white" id="features-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">{{ 'Mengapa Memilih Zathaya Soft?'|t }}</h2>
+        <p class="section-description">
+          {{ 'Keunggulan dan komitmen kami dalam memberikan solusi terbaik untuk bisnis Anda.'|t }}
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3 class="feature-title">{{ 'Expertise Terpercaya'|t }}</h3>
+          <p class="feature-description">
+            {{ 'Tim ahli dengan pengalaman 5+ tahun dalam Drupal dan ReactJS development.'|t }}
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3 class="feature-title">{{ 'Performance Optimal'|t }}</h3>
+          <p class="feature-description">
+            {{ 'Website yang kami bangun dioptimasi untuk kecepatan dan performa terbaik.'|t }}
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3 class="feature-title">{{ 'Keamanan Terjamin'|t }}</h3>
+          <p class="feature-description">
+            {{ 'Implementasi security best practices untuk melindungi website dan data Anda.'|t }}
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3 class="feature-title">{{ 'Responsive Design'|t }}</h3>
+          <p class="feature-description">
+            {{ 'Semua website dirancang mobile-first dan responsive di semua device.'|t }}
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🛠️</div>
+          <h3 class="feature-title">{{ 'Support 24/7'|t }}</h3>
+          <p class="feature-description">
+            {{ 'Layanan maintenance dan support berkelanjutan untuk kelancaran operasional.'|t }}
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">💡</div>
+          <h3 class="feature-title">{{ 'Solusi Custom'|t }}</h3>
+          <p class="feature-description">
+            {{ 'Pendekatan personal untuk setiap project sesuai kebutuhan bisnis unik Anda.'|t }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# Portfolio Preview Section #}
+  <section class="portfolio-section section-padding bg-gray" id="portfolio-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">{{ 'Portfolio Terbaru'|t }}</h2>
+        <p class="section-description">
+          {{ 'Lihat beberapa project terbaik yang telah kami kerjakan untuk berbagai klien.'|t }}
+        </p>
+      </div>
+
+      {# Portfolio items will be loaded via Views #}
+      <div class="portfolio-grid" id="portfolio-grid">
+        {# This will be populated by Drupal Views or custom content #}
+      </div>
+
+      <div class="section-cta text-center">
+        <a href="{{ path('view.portfolio.page_1') }}" class="btn btn-primary btn-large">
+          {{ 'Lihat Semua Portfolio'|t }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {# Testimonials Section #}
+  <section class="testimonials-section section-padding bg-white" id="testimonials-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">{{ 'Apa Kata Klien Kami?'|t }}</h2>
+        <p class="section-description">
+          {{ 'Kepercayaan dan kepuasan klien adalah prioritas utama kami.'|t }}
+        </p>
+      </div>
+
+      {# Testimonials will be loaded via Views #}
+      <div class="testimonials-grid" id="testimonials-grid">
+        {# This will be populated by Drupal Views or custom content #}
+      </div>
+    </div>
+  </section>
+
+  {# CTA Section #}
+  <section class="cta-section section-padding bg-primary">
+    <div class="container">
+      <div class="cta-content text-center">
+        <h2 class="cta-title">{{ 'Siap Memulai Project Anda?'|t }}</h2>
+        <p class="cta-description">
+          {{ 'Konsultasikan kebutuhan website bisnis Anda dengan tim ahli kami. Dapatkan penawaran terbaik dan mulai project sekarang juga!'|t }}
+        </p>
+        
+        <div class="cta-actions">
+          <a href="{{ path('entity.webform.canonical', {'webform': 'contact'}) }}" class="btn btn-white btn-large">
+            {{ 'Konsultasi Sekarang'|t }}
+          </a>
+          <a href="tel:+622112345678" class="btn btn-outline-white btn-large">
+            📞 +62 21 1234 5678
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# Footer #}
+  <footer class="site-footer" role="contentinfo" aria-label="{{ 'Site footer'|t }}">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-columns">
+          
+          {# Company Info Column #}
+          <div class="footer-column footer-company">
+            <div class="footer-branding">
+              <div class="footer-logo">
+                <div class="logo-wrapper">
+                  <div class="logo-icon">Z</div>
+                </div>
+                <div class="footer-identity">
+                  <h3 class="footer-site-name">Zathaya Soft</h3>
+                  <div class="footer-tagline">Professional Web Solutions</div>
+                </div>
+              </div>
+              
+              <p class="footer-description">
+                {{ 'Kami adalah perusahaan pengembangan website profesional yang mengkhususkan diri dalam solusi Drupal dan ReactJS. Memberikan layanan terbaik untuk kebutuhan digital bisnis Anda.'|t }}
+              </p>
+
+              {# Contact Info #}
+              <div class="footer-contact">
+                <div class="contact-item">
+                  <span class="contact-icon">📍</span>
+                  <span class="contact-text">Jl. Sudirman No. 123, Jakarta, DKI Jakarta 12190</span>
+                </div>
+                <div class="contact-item">
+                  <span class="contact-icon">📞</span>
+                  <span class="contact-text">+62 21 1234 5678</span>
+                </div>
+                <div class="contact-item">
+                  <span class="contact-icon">✉️</span>
+                  <span class="contact-text">info@zathayasoft.com</span>
+                </div>
+              </div>
+
+              {# Social Links #}
+              <div class="footer-social">
+                <a href="https://linkedin.com/company/zathayasoft" target="_blank" rel="noopener noreferrer" class="social-link">
+                  <span class="sr-only">LinkedIn</span>
+                  <span class="social-icon">in</span>
+                </a>
+                <a href="https://twitter.com/zathayasoft" target="_blank" rel="noopener noreferrer" class="social-link">
+                  <span class="sr-only">Twitter</span>
+                  <span class="social-icon">tw</span>
+                </a>
+                <a href="https://facebook.com/zathayasoft" target="_blank" rel="noopener noreferrer" class="social-link">
+                  <span class="sr-only">Facebook</span>
+                  <span class="social-icon">fb</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {# Services Links Column #}
+          <div class="footer-column footer-services">
+            <h4 class="footer-column-title">{{ 'Layanan'|t }}</h4>
+            <ul class="footer-links">
+              <li><a href="{{ path('view.services.page_1') }}#web-development">{{ 'Web Development'|t }}</a></li>
+              <li><a href="{{ path('view.services.page_1') }}#drupal">{{ 'Drupal Development'|t }}</a></li>
+              <li><a href="{{ path('view.services.page_1') }}#reactjs">{{ 'ReactJS Development'|t }}</a></li>
+              <li><a href="{{ path('view.services.page_1') }}#ecommerce">{{ 'E-commerce Solutions'|t }}</a></li>
+              <li><a href="{{ path('view.services.page_1') }}#custom">{{ 'Custom Applications'|t }}</a></li>
+            </ul>
+          </div>
+
+          {# Company Links Column #}
+          <div class="footer-column footer-company-links">
+            <h4 class="footer-column-title">{{ 'Perusahaan'|t }}</h4>
+            <ul class="footer-links">
+              <li><a href="{{ path('node.add', {'node_type': 'page'}) }}">{{ 'Tentang Kami'|t }}</a></li>
+              <li><a href="{{ path('node.add', {'node_type': 'page'}) }}#team">{{ 'Tim Kami'|t }}</a></li>
+              <li><a href="{{ path('view.portfolio.page_1') }}">{{ 'Portfolio'|t }}</a></li>
+              <li><a href="{{ path('view.news.page_1') }}">{{ 'Blog'|t }}</a></li>
+            </ul>
+          </div>
+
+          {# Support Links Column #}
+          <div class="footer-column footer-support">
+            <h4 class="footer-column-title">{{ 'Dukungan'|t }}</h4>
+            <ul class="footer-links">
+              <li><a href="{{ path('entity.webform.canonical', {'webform': 'contact'}) }}">{{ 'Kontak'|t }}</a></li>
+              <li><a href="{{ path('entity.webform.canonical', {'webform': 'support'}) }}">{{ 'Support'|t }}</a></li>
+              <li><a href="{{ path('node.add', {'node_type': 'page'}) }}">{{ 'Privacy Policy'|t }}</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    {# Footer Bottom #}
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-content">
+          <div class="footer-copyright">
+            <p>&copy; {{ "now"|date('Y') }} {{ 'Zathaya Soft. All rights reserved.'|t }}</p>
+          </div>
+          
+          <div class="footer-legal">
+            <a href="{{ path('node.add', {'node_type': 'page'}) }}">{{ 'Terms of Service'|t }}</a>
+            <a href="{{ path('node.add', {'node_type': 'page'}) }}">{{ 'Privacy Policy'|t }}</a>
+            <a href="{{ path('node.add', {'node_type': 'page'}) }}">{{ 'Cookie Policy'|t }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+{# Back to top button #}
+<button class="back-to-top" id="back-to-top" type="button" aria-label="{{ 'Back to top'|t }}" title="{{ 'Back to top'|t }}">
+  <span class="back-to-top-icon">↑</span>
+</button>
