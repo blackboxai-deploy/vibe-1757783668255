@@ -1,0 +1,67 @@
+name: Zathaya Soft
+type: theme
+description: 'Custom theme for Zathaya Soft website - Modern, professional web development company theme'
+package: Custom
+core_version_requirement: ^10.5 || ^11
+
+# Regions for content placement
+regions:
+  header: Header
+  primary_menu: Primary menu
+  secondary_menu: Secondary menu
+  hero: Hero section
+  breadcrumb: Breadcrumb
+  content: Content
+  sidebar_first: Left sidebar
+  sidebar_second: Right sidebar
+  featured: Featured
+  footer_first: Footer first column
+  footer_second: Footer second column
+  footer_third: Footer third column
+  footer_fourth: Footer fourth column
+  footer_bottom: Footer bottom
+
+# CSS and JS libraries
+libraries:
+  - zathaya_soft/global-styling
+  - zathaya_soft/global-scripts
+
+# Libraries to include on all pages
+libraries-override:
+  system/base:
+    css:
+      component:
+        /core/themes/stable9/css/system/components/ajax-progress.module.css: css/components/ajax-progress.css
+
+# Dependencies
+base theme: false
+dependencies:
+  - drupal:system (>=10.5)
+
+# Screenshots for theme selection
+screenshot: screenshot.png
+
+# Supported features
+features:
+  - comment_user_picture
+  - comment_user_verification
+  - favicon
+  - high_contrast
+  - logo
+  - node_user_picture
+  - normalize_css
+  - secondary_links
+  - slogan
+  - main_menu
+
+# Theme settings
+settings:
+  features:
+    comment_user_picture: true
+    comment_user_verification: true
+    favicon: true
+    node_user_picture: true
+    normalize_css: true
+  third_party_settings:
+    shortcut:
+      module_link: true
