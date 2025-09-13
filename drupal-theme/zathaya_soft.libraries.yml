@@ -1,0 +1,99 @@
+# Global styling library
+global-styling:
+  version: 1.0.0
+  css:
+    base:
+      css/base/normalize.css: {}
+      css/base/reset.css: {}
+      css/base/typography.css: {}
+    layout:
+      css/layout/grid.css: {}
+      css/layout/header.css: {}
+      css/layout/navigation.css: {}
+      css/layout/footer.css: {}
+    component:
+      css/components/buttons.css: {}
+      css/components/cards.css: {}
+      css/components/forms.css: {}
+      css/components/hero.css: {}
+      css/components/services.css: {}
+      css/components/portfolio.css: {}
+      css/components/testimonials.css: {}
+    theme:
+      css/theme/theme.css: {}
+      css/theme/responsive.css: {}
+
+# Global JavaScript library
+global-scripts:
+  version: 1.0.0
+  js:
+    js/navigation.js: {}
+    js/smooth-scroll.js: {}
+    js/animations.js: {}
+    js/forms.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+
+# Homepage specific library
+homepage:
+  version: 1.0.0
+  css:
+    component:
+      css/pages/homepage.css: {}
+  js:
+    js/homepage.js: {}
+  dependencies:
+    - zathaya_soft/global-styling
+    - zathaya_soft/global-scripts
+
+# Services page library
+services:
+  version: 1.0.0
+  css:
+    component:
+      css/pages/services.css: {}
+  js:
+    js/services.js: {}
+  dependencies:
+    - zathaya_soft/global-styling
+
+# Portfolio page library
+portfolio:
+  version: 1.0.0
+  css:
+    component:
+      css/pages/portfolio.css: {}
+      css/components/lightbox.css: {}
+  js:
+    js/portfolio.js: {}
+    js/lightbox.js: {}
+  dependencies:
+    - zathaya_soft/global-styling
+
+# Contact page library
+contact:
+  version: 1.0.0
+  css:
+    component:
+      css/pages/contact.css: {}
+      css/components/contact-form.css: {}
+  js:
+    js/contact.js: {}
+    js/form-validation.js: {}
+  dependencies:
+    - zathaya_soft/global-styling
+
+# Print styles
+print:
+  version: 1.0.0
+  css:
+    print:
+      css/print/print.css: {}
+
+# Admin styles (for backend)
+admin:
+  version: 1.0.0
+  css:
+    theme:
+      css/admin/admin.css: {}
